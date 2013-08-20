@@ -1,0 +1,82 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: @sidebar-width;
+    margin-left: -@sidebar-width;
+    background: #043004;
+    color: #fff;
+    text-align: right;
+
+    header {
+        margin: 50% 1em 0;
+        a.brand {
+            display: inline-block;
+            margin: 0;
+            &:hover {
+                text-decoration: none;
+            }
+            .title {
+                .font-wendy-one;
+                display: inline-block;
+                font-size: 4.7vw;
+                @media (max-width: 860px) {
+                    font-size: 4.3vw;
+                }
+                color: @light;
+            }
+            .caption {
+                .font-wendy-one;
+                display: inline-block;
+                font-size: 30px;
+                line-height: 2px;
+                margin-left: -7px;
+                color: @main;
+            }
+        }
+        .tagline {
+            font-weight: 300;
+            color: @light;
+            font-size: 18px;
+        }
+    }
+    nav {
+        padding: 0px;
+        margin: 0px;
+        a.pure-button {
+            zoom: 1;
+            display: inline-block;
+            margin: .8em .5em 0 0;
+            background: transparent;
+            border: 3px solid @main;
+            color: @lighter;
+            &:hover,
+            &:focus {
+                border: 3px solid @light;
+                color: lighten(@light, 15%);
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+@media @slim {
+    .sidebar {
+        width: 100%;
+        position: relative;
+        margin: 0;
+        text-align: center;
+
+        header {
+            margin: .5em 0 .2em .5em;
+            a.brand .title {
+                font-size: 45px;
+            }
+        }
+        nav {
+            a.pure-button {
+                margin: .5em .3em 1em;
+            }
+        }
+    }
+}

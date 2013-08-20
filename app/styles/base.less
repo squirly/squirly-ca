@@ -1,0 +1,85 @@
+@import url(http://yui.yahooapis.com/pure/0.2.1/pure-min.css);
+@import url(//fonts.googleapis.com/css?family=Istok+Web|Wendy+One);
+
+@sidebar-width: 25%;
+@footer-height: 4*16px;
+
+@slim: ~"(max-width: 767px)";
+@tiny: ~"(max-width: 480px)";
+
+@import "colours";
+@import "sidebar";
+@import "blog";
+
+.font-wendy-one () {
+    font-family: 'Wendy One', sans-serif;
+}
+
+.font-istok-web () {
+    font-family: 'Istok Web', sans-serif;
+}
+html, body {
+    height: 100%;
+    .font-istok-web !important;
+    background-color: @background !important;
+}
+
+#footer {
+    background-color: @main;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: @main;
+}
+a:hover,
+a:focus {
+    text-decoration: underline;
+}
+
+#layout {
+    height: 100%;
+    padding-left: @sidebar-width;
+    position: relative;
+}
+
+.content {
+    padding: 3em;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 0 -4em;
+}
+
+#push, footer {
+    height: 4em;
+}
+footer {
+    border-top: 1px solid @lightest;
+    background-color: darken(@background, 5%);
+    text-align: center;
+    padding: .5em 0;
+    line-height: .9em;
+}
+
+@media @slim {
+    #layout {
+        padding: 0;
+    }
+    .content {
+        padding: 2em 2em 0;
+    }
+}
+
+@media @tiny {
+    .content {
+        padding: 1em .5em 0;
+    }
+}

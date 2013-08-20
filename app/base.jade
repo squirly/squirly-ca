@@ -1,0 +1,28 @@
+!!! 5
+html(lang='en')
+  head
+    title
+      block title Squirly.ca
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', type='text/css', href='/style.css')
+    link(rel='author', href='https://plus.google.com/u/0/114596080058308331871/posts')
+    block head
+  body
+    #layout.pure-g-r
+      .sidebar.pure-u
+          header
+              a.brand(href='/')
+                .title Squirly
+                .caption .ca
+              .tagline Tyler Jones
+          nav
+            a.pure-button(href="/me/") Me
+            a.pure-button(href="/blog/") Blog
+            a.pure-button(href="/work/") Work
+      .content.pure-u-1
+        block body
+        #push
+      footer.pure-u-1
+        p © <a href="me">Tyler Jones</a> 2013
+    script(src="https://apis.google.com/js/plusone.js")
+    block scripts

@@ -1,0 +1,12 @@
+extend base
+
+block body
+  .row-fluid
+    .span9
+      section
+        h1 
+          block blog_title
+        h2
+          block blog_subtitle
+        block blog_content
+        .g-comments(data-href="window.url", data-width="600", data-first_party_property="BLOGGER", data-view_type="FILTERED_POSTMOD")
