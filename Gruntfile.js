@@ -27,11 +27,11 @@ module.exports = function (grunt) {
         watch: {
             less: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.less'],
-                tasks: ['less']
+                tasks: ['less:development']
             },
             jade: {
                 files: ['<%= yeoman.app %>/**/*.jade'],
-                tasks: ['jade']
+                tasks: ['jade:development']
             },
             styles: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
@@ -110,7 +110,7 @@ module.exports = function (grunt) {
             server: '.tmp'
         },
         jade: {
-            dist: {
+            development: {
                 options: {
                     pretty: true
                 },
@@ -118,6 +118,19 @@ module.exports = function (grunt) {
                     expand: true,
                     cwd: '<%= yeoman.app %>',
                     dest: '.tmp',
+                    src: ['{,**/}*.jade', '!{,**/}{,*_}base.jade'],
+                    ext: '.html'
+                },
+                ]
+            },
+            dist: {
+                options: {
+                    pretty: true
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= yeoman.app %>',
+                    dest: 'dist',
                     src: ['{,**/}*.jade', '!{,**/}{,*_}base.jade'],
                     ext: '.html'
                 },
@@ -131,6 +144,14 @@ module.exports = function (grunt) {
                 },
                 files: {
                     '.tmp/style.css': '<%= yeoman.app %>/styles/base.less'
+                }
+            },
+            dist: {
+                options: {
+                    paths: ['<%= yeoman.app %>/styles/']
+                },
+                files: {
+                    'dist/style.css': '<%= yeoman.app %>/styles/base.less'
                 }
             }
         },
@@ -197,14 +218,14 @@ module.exports = function (grunt) {
             //
             //     <!-- build:css({.tmp,app}) styles/main.css -->
             //
-            // dist: {
-            //     files: {
-            //         '<%= yeoman.dist %>/styles/main.css': [
-            //             '.tmp/styles/{,*/}*.css',
-            //             '<%= yeoman.app %>/styles/{,*/}*.css'
-            //         ]
-            //     }
-            // }
+            dist: {
+                 files: {
+                     '<%= yeoman.dist %>/styles/main.css': [
+                         '.tmp/styles/{,*/}*.css',
+                         '<%= yeoman.app %>/styles/{,*/}*.css'
+                     ]
+                 }
+            }
         },
         htmlmin: {
             dist: {
@@ -252,18 +273,18 @@ module.exports = function (grunt) {
         },
         concurrent: {
             server: [
-                'less',
-                'jade',
+                'less:development',
+                'jade:development',
                 'copy:styles'
             ],
             test: [
-                'less',
-                'jade',
+                'less:development',
+                'jade:development',
                 'copy:styles'
             ],
             dist: [
-                'less',
-                'jade',
+                'less:dist',
+                'jade:dist',
                 'copy:styles',
                 'imagemin',
                 'svgmin',
@@ -296,10 +317,8 @@ module.exports = function (grunt) {
         'clean:dist',
         'useminPrepare',
         'concurrent:dist',
-        'concat',
-        'cssmin',
-        'uglify',
         'copy:dist',
+        'cssmin:dist',
         'rev',
         'usemin'
     ]);
