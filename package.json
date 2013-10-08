@@ -1,5 +1,6 @@
 {
   "name": "squirly-ca",
+  "repository": "git@gitlab.com:squirly/squirly-ca.git",
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {

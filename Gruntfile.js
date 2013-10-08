@@ -269,13 +269,21 @@ module.exports = function (grunt) {
                 cwd: '<%= yeoman.app %>/styles',
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
+            },
+            images: {
+                expand: true,
+                cwd: '<%= yeoman.app %>/images',
+                dest: '.tmp/images/',
+                src: '{,*/}*.*'
+
             }
         },
         concurrent: {
             server: [
                 'less:development',
                 'jade:development',
-                'copy:styles'
+                'copy:styles',
+                'copy:images'
             ],
             test: [
                 'less:development',
@@ -286,6 +294,7 @@ module.exports = function (grunt) {
                 'less:dist',
                 'jade:dist',
                 'copy:styles',
+                'copy:images',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
